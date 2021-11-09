@@ -1,4 +1,5 @@
-(()=>{
+import BotaoConclui from './componentes/concluiTarefa.js'
+import BotaoDeleta from './componentes/deletaTarefa.js'
     const criarTarefa = (evento) =>{
     //evento passa um objeto com as informacoes
     evento.preventDefault() // prevençao de evento padrao
@@ -22,49 +23,9 @@
     input.value=''//limpa o input após ser clicado
 
 }
-
 const novaTarefa = document.querySelector('[data-form-button]');// percorre o dom e seleciona o parametro pasado
-
 novaTarefa.addEventListener('click', criarTarefa);
 
-//BotaoConclui é um componenet, foi utilizado letra maiuscula para diferenciar da funcao
-const BotaoConclui = () =>{
-    const botaoConclui = document.createElement('button')
-
-    botaoConclui.classList.add('check-button'); // adicona classe css
-    botaoConclui.innerText= 'concluir';
-
-    botaoConclui.addEventListener('click',concluirTarefa)
-
-    return botaoConclui;
-
-}
-const concluirTarefa = (evento) =>{
-    const botaoConclui = evento.target// quero saber o alvo do evento, ou seja, quando eu clicar, eu quero saber onde eu cliquei
-
-    const tarefaCompleta = botaoConclui.parentElement// tarefaCompleta recebe o pai da funcao botaoConclui, ou seja, a <li>
-
-    tarefaCompleta.classList.toggle('done') // toggle- executa a classe css(efeito de riscado) a partir do momento que é clicado no botao
-}
-
-const BotaoDeleta = ()=>{
-    
-    const botaoDeleta = document.createElement('button');
-    botaoDeleta.innerText = 'deletar';
-    botaoDeleta.addEventListener('click', deletarTarefa)
-    return botaoDeleta;
-
-}
-const deletarTarefa= (evento) =>{
-    const botaoDeleta = evento.target;
-    
-    const tarefaCompleta= botaoDeleta.parentElement;
-
-    tarefaCompleta.remove();
-
-    return botaoDeleta
-}
-})()
 /*
 
 Vamos utilizar a “IIFE”, ou Immediately Invoked Function Expression ou “Função de Invocação Imediata”.
