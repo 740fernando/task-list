@@ -2,15 +2,20 @@ const criarTarefa = (evento) =>{
     //evento passa um objeto com as informacoes
     evento.preventDefault() // prevençao de evento padrao
     
+    const lista = document.querySelector('[data-list'); //percorre o dom
     const input = document.querySelector('[data-form-input]');
-    const valor = input.value
     
-    const tarefa = document.querySelector('[data-task');
+    const valor = input.value // armazena o valor digitado no html
     
-    const conteudo = `<p class="content">${valor}</p>`;
+    const tarefa = document.createElement('li') // cria um elemento do dom
 
-    tarefa.innerHTML=conteudo ; // propriedade do dom innerHtml= acessa conteudo da tag e colcoa o valor que foi inserido no put
+    tarefa.classList.add('task');
+
+    const conteudo = `<p class="content">${valor}</p>`;
     
+    tarefa.innerHTML=conteudo; //innerHtml- cria o elemento no dom
+
+    lista.appendChild(tarefa);
     input.value=''//limpa o input após ser clicado
 
 }
@@ -20,6 +25,7 @@ const novaTarefa = document.querySelector('[data-form-button]');// percorre o do
 novaTarefa.addEventListener('click', criarTarefa)
 
 
+// DOM - REPRESENTACAO DO HTML EM FORMAS DE NÓS
 
 //EventListener= Elemento que recebe o evento / O que vai acontecer quando o evento disparar - Precisamos do tipo do evento, do elemento que vai receber o evento e o que vai acontecer quando o evento for disparado
 
